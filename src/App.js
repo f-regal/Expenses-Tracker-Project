@@ -11,7 +11,7 @@ function App() {
     },
     { id: 'e2',
       title: 'New TV',
-      amount: 799.49,
+      amount: 799.50,
        date: new Date(2021, 2, 12)
     },
     {
