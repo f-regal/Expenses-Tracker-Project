@@ -33,6 +33,12 @@ function App() {
       amount: 450,
       date: new Date(2021, 5, 12),
     },
+    {
+      id: 'e5',
+      title: 'fan',
+      amount: 250,
+      date: new Date(2021, 6, 11),
+    },
   ];
 
   return (
