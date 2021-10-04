@@ -3,39 +3,46 @@ import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
 
-    const [EnteredTitle, setEnteredTitle] = useState('');
+    const [EnteredTitle, setEnteredTitle] = useState('')
     const titleChangeHandler = (event) => {
-        setEnteredTitle(event.target.value);
-    };
+        setEnteredTitle(event.target.value)
+    }
 
-    const [EnteredAmount, setEnteredAmount] = useState('');
+    const [EnteredAmount, setEnteredAmount] = useState('')
     const AmountChangeHandler = (event) => {
-        setEnteredAmount(event.target.value);
-    };
+        setEnteredAmount(event.target.value)
+    }
 
-    const [EnteredDate, setEnteredDate] = useState('');
+    const [EnteredDate, setEnteredDate] = useState('')
     const DateChangeHandler = (event) => {
-        setEnteredDate(event.target.value);
-    };
+        setEnteredDate(event.target.value)
+    }
 
     const submitChangeHandler = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         
         const expenseData = {
             title: EnteredTitle,
             amount: EnteredAmount,
             date: new Date(EnteredDate)
-        };
+        }
         
-        props.onSaveExpense(expenseData);
+        props.onSaveExpense(expenseData)
 
-        setEnteredAmount('');
-        setEnteredTitle('');
-        setEnteredDate('');
+        setEnteredAmount('')
+        setEnteredTitle('')
+        setEnteredDate('')
 
     }
 
-    return <div>
+    //Added My Assignment Code
+    const AddNewExpense = 'hey';
+    //How can i pass states between components
+    const CancelClickHandler = (event) => {
+        setcurrentForm(AddNewExpense)
+    }
+    
+    const ExpenseForm2 = <div>
         <form onSubmit={submitChangeHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
@@ -58,9 +65,19 @@ const ExpenseForm = (props) => {
             <div className="new-expense__actions">
                 <button type="submit">Add Expense</button>
             </div>
+
+            <div className="new-expense__actions">
+                <button type="submit" onClick={CancelClickHandler}>Cancel</button>
+            </div>
         </form>
     </div>
 
-}
+    const [currentForm, setcurrentForm] = useState(ExpenseForm2)
+    
+    return <div>
+        {ExpenseForm2}
+    </div>
+    
 
-export default ExpenseForm;
+}
+export default ExpenseForm
