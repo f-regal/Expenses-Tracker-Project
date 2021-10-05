@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
 import ExpenseForm from './ExpenseForm';
+import AddNewExpense from './AddNewExpense';
 import './NewExpense.css'
 
 
@@ -13,34 +13,11 @@ const NewExpense = (props) => {
         }
         props.onAddExpense(ExpenseData);
     }
-
-
-
-    // My Attempt At Assignment
+    
     const ExpenseForm1 = <ExpenseForm onSaveExpense={saveExpenseHandler} />
 
-    const displayExpenseFormHandler = (event) => {
-        event.preventDefault()
-        setAddNewExpense(ExpenseForm1)
-    }
-    const AddNewExpenseBtn = <button type="submit" onClick={displayExpenseFormHandler}>Add New Expense</button>
-
-    const [AddNewExpense, setAddNewExpense] = useState(AddNewExpenseBtn)
-    
-    
-    
-    
-    
-
-    
-
-    
-
-
-
-    // What we originally return - <ExpenseForm onSaveExpense={saveExpenseHandler} />
     return <div className="new-expense">
-       {AddNewExpense}
+        <AddNewExpense onAddNewExpense={ExpenseForm1} />
     </div>
 
 }

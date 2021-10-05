@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './ExpenseForm.css';
+import AddNewExpense from './AddNewExpense';
 
 const ExpenseForm = (props) => {
 
@@ -35,14 +36,13 @@ const ExpenseForm = (props) => {
 
     }
 
-    //Added My Assignment Code
-    const AddNewExpense = 'hey';
-    //How can i pass states between components
-    const CancelClickHandler = (event) => {
-        setcurrentForm(AddNewExpense)
+    //update state of expenseForm to display the addNewExpense button when either 'Cancel' or 'Add Expense' are clicked.
+    const displayAddNewExpense = () => {
+        setcurrentForm(<AddNewExpense />)
     }
-    
-    const ExpenseForm2 = <div>
+
+    //Added My Assignment Code
+    const ExpenseForm = <div>
         <form onSubmit={submitChangeHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
@@ -63,19 +63,19 @@ const ExpenseForm = (props) => {
             </div>
 
             <div className="new-expense__actions">
-                <button type="submit">Add Expense</button>
+                <button type="submit" onClick={displayAddNewExpense}>Add Expense</button>
             </div>
 
             <div className="new-expense__actions">
-                <button type="submit" onClick={CancelClickHandler}>Cancel</button>
+                <button type="submit" onClick={displayAddNewExpense}>Cancel</button>
             </div>
         </form>
     </div>
 
-    const [currentForm, setcurrentForm] = useState(ExpenseForm2)
-    
+    const [currentForm, setcurrentForm] = useState(ExpenseForm);
+
     return <div>
-        {ExpenseForm2}
+        {currentForm}
     </div>
     
 
