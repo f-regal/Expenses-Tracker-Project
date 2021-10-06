@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './ExpenseForm.css';
-import AddNewExpense from './AddNewExpense';
+
 
 const ExpenseForm = (props) => {
 
@@ -36,47 +36,34 @@ const ExpenseForm = (props) => {
 
     }
 
-    //update state of expenseForm to display the addNewExpense button when either 'Cancel' or 'Add Expense' are clicked.
-    const displayAddNewExpense = () => {
-        setcurrentForm(<AddNewExpense />)
-    }
+    return (
+            <form onSubmit={submitChangeHandler}>
+                <div className="new-expense__controls">
+                    <div className="new-expense__control">
+                        <label>Title</label>
+                        <input type="text" value={EnteredTitle} onChange = {titleChangeHandler}></input>
+                    </div>
 
-    //Added My Assignment Code
-    const ExpenseForm = <div>
-        <form onSubmit={submitChangeHandler}>
-            <div className="new-expense__controls">
-                <div className="new-expense__control">
-                    <label>Title</label>
-                    <input type="text" value={EnteredTitle} onChange = {titleChangeHandler}></input>
+                    <div className="new-expense__control">
+                        <label>Amount</label>
+                        <input type="number" min="0.01" step="0.01" value={EnteredAmount} onChange = {AmountChangeHandler}></input>
+                    </div>
+
+                    <div className="new-expense__control">
+                        <label>Date</label>
+                        <input type="date" min="2019-01-01" max="2022-12-31" value={EnteredDate} onChange = {DateChangeHandler}></input>
+                    </div>
+
                 </div>
 
-                <div className="new-expense__control">
-                    <label>Amount</label>
-                    <input type="number" min="0.01" step="0.01" value={EnteredAmount} onChange = {AmountChangeHandler}></input>
+                <div className="new-expense__actions">
+                    <button type="submit" >Add Expense</button>
+                    <button type="submit" >Cancel</button>
                 </div>
 
-                <div className="new-expense__control">
-                    <label>Date</label>
-                    <input type="date" min="2019-01-01" max="2022-12-31" value={EnteredDate} onChange = {DateChangeHandler}></input>
-                </div>
-
-            </div>
-
-            <div className="new-expense__actions">
-                <button type="submit" onClick={displayAddNewExpense}>Add Expense</button>
-            </div>
-
-            <div className="new-expense__actions">
-                <button type="submit" onClick={displayAddNewExpense}>Cancel</button>
-            </div>
-        </form>
-    </div>
-
-    const [currentForm, setcurrentForm] = useState(ExpenseForm);
-
-    return <div>
-        {currentForm}
-    </div>
+            
+            </form>
+    )
     
 
 }
